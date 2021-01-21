@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+		<link rel="stylesheet" href="css/style.css">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+    <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <script language="JavaScript">
+      function webdisResults (form) {
+          var args = {};
+          args.host = form.host.value;
+          if (!args.host) args.host = "localhost";
+          args.port = form.port.value;
+          if (!args.port) args.port = 7379;
+          args.username = form.username.value;
+          if (!args.username) args.username = "null";
+          args.password = form.password.value;
+          if (!args.password) args.password = "null";
+          //args.warning = form.warning.value;
+          if (!args.warning) args.warning = 5;
+          //args.critical = form.critical.value;
+          if (!args.critical) args.critical = 15;
+          getWebdisInfo(args);
+          //alert(args);
+          //alert (`host: ${args.host}\nport: ${args.port}\nusername: ${args.username}\npassword: ${args.password}\nwarning: ${args.warning}\ncritical ${args.critical}`);
+      }
+      </script>
+      <script src="./checkRedis.js?params=args"></script>
+      <title>Redis Health Check</title>
+  </head>
+  <body>
+    <div class="wrapper" style="background-image: url('images/bg-registration-form-2.jpg');">
+      <div class="inner">
+      <br>
+      <div class="form-group">
+      <form name="webdisForm" action="" method="GET">
+        <table>
+          <tr class="form-wrapper"><h1>Connect to Webdis<h1></tr>
+          <tr> 
+            <td class="form-wrapper">
+               Webdis Host<br>(Default: localhost):<br><input type="text" name="host" value="">
+            </td>
+            <td class="form-wrapper">
+               Webdis Port<br>(Default: 7379):<br><input type="text" name="port" value="">
+            </td>
+        </tr>
+        <tr>
+            <td class="form-wrapper">
+              Webdis Username<br>(Default: blank):<br><input type="text" name="username" value="">
+            </td>
+            <td class="form-wrapper">
+              Webdis Password<br>(Default: blank):<br><input type="text" name="password" value="">
+            </td>
+        </tr>
+        <!-- <tr>
+          <td class="form-wrapper">
+            Warning Threshold<br>(Default: 5 GB):<br><input type="text" name="warning" value="">
+          </td>
+          <td class="form-wrapper">
+            Critical Threshold<br>(Default: 15 GB):<br><input type="text" name="critical" value="">
+          </td>
+        </tr> -->
+        </table>
+        <div class="form-wrapper"><input type="button" name="button" value="Get Webdis Info" onClick="webdisResults(this.form)"></div>
+        <br><br>The default values will be used if empty 
+      </form>
+      </div>
+      </div>
+    </div>
+       
+    <!-- We are using Node.js <span id="node-version"></span>,
+    Chromium <span id="chrome-version"></span>,
+    and Electron <span id="electron-version"></span>. -->
+
+    <!-- You can also require other files to run in this process -->
+    <!-- <script src="./renderer.js"></script> -->
+  </body>
+</html>

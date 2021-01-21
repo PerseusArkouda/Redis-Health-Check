@@ -1,14 +1,6 @@
 const bytes = require('bytes');
 const request = require('request');
 
-/*const args = {};
-args.critical = "10";
-args.warning = "10";
-args.host = "arkouda.hopto.org";
-args.port = "7379";
-args.username = "null";
-args.password = "null";*/
-
 function getWebdisInfo(args) {
 
   const critical = args.critical || "15GB";

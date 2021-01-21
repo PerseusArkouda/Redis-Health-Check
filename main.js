@@ -14,6 +14,7 @@ function createWindow () {
     resizable: false,
     icon:'images/logo.ico',
     webPreferences: {
+      contextIsolation: false,
       nodeIntegration: true,
       preload: path.join(__dirname, 'preload.js')
     }

@@ -108,3 +108,4 @@ Releases/
 out/
 *.txt
 package-lock.json
+packager.js

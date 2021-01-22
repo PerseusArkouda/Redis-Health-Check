@@ -4,7 +4,9 @@
   "description": "Redis memory usage check through Webdis",
   "main": "main.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
   "repository": "https://github.com/PerseusArkouda/Redis-Health-Check",
   "keywords": [
@@ -21,15 +23,49 @@
   "author": "Perseus",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^11.2.0",
-    "electron-packager": "^15.2.0"
+    "@electron-forge/cli": "^6.0.0-beta.54",
+    "@electron-forge/maker-deb": "^6.0.0-beta.54",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.54",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
+    "@electron-forge/maker-zip": "^6.0.0-beta.54",
+    "electron": "^11.2.0"
   },
   "dependencies": {
-    "buffer": "^6.0.3",
-    "byte": "^2.0.0",
     "bytes": "^3.1.0",
     "cjs": "0.0.11",
+    "electron-squirrel-startup": "^1.0.0",
+    "node-pre-gyp": "^0.11.0",
+    "rebuild": "^0.1.2",
     "redis": "^3.0.2",
     "request": "^2.88.2"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {
+        "icon": "images/logo.ico" 
+      },
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "redis_health_check"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
   }
 }

@@ -1,10 +1,8 @@
 // Modules to control application life and create native browser window
 const {app, BrowserWindow, Menu} = require('electron');
+if (require('electron-squirrel-startup')) return app.quit();
 Menu.setApplicationMenu(false)
 const path = require('path');
-//const bytes = require('bytes');
-//const request = require('request');
-//const Buffer = require('buffer').Buffer;
 
 function createWindow () {
   // Create the browser window.
@@ -12,7 +10,7 @@ function createWindow () {
     width: 800,
     height: 440,
     resizable: false,
-    icon:'images/logo.ico',
+    icon: path.join(__dirname, 'images/logo.ico'),
     webPreferences: {
       contextIsolation: false,
       nodeIntegration: true,
